@@ -1,0 +1,38 @@
+{
+  "name": "clapton",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raphamorim/clapton.git"
+  },
+  "keywords": [
+    "player",
+    "torrent",
+    "client",
+    "VLC",
+    "clappr"
+  ],
+   "author": {
+    "name": "Raphael Amorim",
+    "email": "rapha850@gmail.com",
+    "url": "http://raphamorim.io"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/raphamorim/clapton/issues"
+  },
+  "homepage": "https://github.com/raphamorim/clapton#readme",
+  "devDependenciess": {
+    "electron": "^1.6.11",
+    "electron-packager": "^8.7.2"
+  },
+  "engines": {
+    "node": ">=4.0.0",
+    "yarn": ">=0.27.1"
+  }
+}
