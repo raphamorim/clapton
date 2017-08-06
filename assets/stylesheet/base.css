@@ -12,6 +12,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 30px;
 }
 
 .glitch {
@@ -25,7 +26,7 @@ body {
 }
 
 .banner {
-  position: fixed;
+  position: absolute;
   top: 30px;
   right: 30px;
 }
