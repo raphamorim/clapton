@@ -3,21 +3,10 @@ const {remote, shell} = require('electron')
 const playerElement = document.querySelector("#player")
 const container = document.querySelector(".container")
 const openFileElement = document.querySelector("#open-file")
+const openTorrentElement = document.querySelector("#open-torrent")
 
 const linkTwitterElement = document.querySelector(".link-twitter")
 const linkContributeElement = document.querySelector(".link-contribute")
-
-linkContributeElement.addEventListener('click', function(e) {
-  event.preventDefault()
-  shell.openExternal(e.target.href)
-  return false
-})
-
-linkTwitterElement.addEventListener('click', function(e) {
-  event.preventDefault()
-  shell.openExternal(e.target.href)
-  return false
-})
 
 function openVideoFile() {
   remote.dialog.showOpenDialog(remote.getCurrentWindow(), {
@@ -50,7 +39,20 @@ function openVideoFile() {
   })
 }
 
+function openExternal(e) {
+  event.preventDefault()
+  shell.openExternal(e.target.href)
+}
+
+linkContributeElement.addEventListener('click', openExternal)
+
+linkTwitterElement.addEventListener('click', openExternal)
+
 openFileElement.addEventListener('click', openVideoFile)
+
+openTorrentElement.addEventListener('click', () => {
+  alert('Feature under development!')
+})
 
 key('⌘+o', (event, handler) => {
   // TODO: Multiple files and diretory
