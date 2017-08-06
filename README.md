@@ -6,5 +6,7 @@
 
 ## Credits
 
-Created by [@raphamundi](https://twitter.com/raphamundi)
+Created by [@raphamundi](https://twitter.com/raphamundi).
+
+Powered by [Electron](https://github.com/electron/electron) and [Clappr](github.com/clappr/clappr).
 

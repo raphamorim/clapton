@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/raphamorim/clapton#readme",
   "devDependencies": {
+    "clappr": "^0.2.71",
     "electron": "^1.6.11",
     "electron-packager": "^8.7.2",
     "keymaster": "^1.6.2"

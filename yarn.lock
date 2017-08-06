@@ -133,6 +133,10 @@ chromium-pickle-js@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/chromium-pickle-js/-/chromium-pickle-js-0.2.0.tgz#04a106672c18b085ab774d983dfa3ea138f22205"
 
+clappr@^0.2.71:
+  version "0.2.71"
+  resolved "https://registry.yarnpkg.com/clappr/-/clappr-0.2.71.tgz#51a3f700d74f7c619d426dd024f8e58ff753f252"
+
 co@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/co/-/co-4.6.0.tgz#6ea6bdf3d853ae54ccb8e47bfa0bf3f9031fb184"

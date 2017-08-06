@@ -58,8 +58,7 @@ body {
   text-align: center;
   display: flex;
   justify-content: center;
-  align-items: baseline;
-  /*background: #000;*/
+  align-items: baseline;  /*background: #000;*/
   position: relative;
   z-index: 0;
 }
@@ -77,8 +76,17 @@ footer {
   bottom: 0;
   background: #E88B8C;
   padding: 5px;
-  color: white;
   text-align: center;
+}
+
+footer a {
+  text-decoration: none;
+  color: white;
+  transition: all 300ms ease;
+}
+
+footer a:hover {
+  opacity: 0.8;
 }
 
 @keyframes jackInTheBox {
@@ -107,81 +115,90 @@ footer {
   animation-name: jackInTheBox;
 }
 
-.animated-button:link, .animated-button:visited {
-    position: relative;
-    display: block;
-    margin: 0px auto 0;
-    padding: 14px 15px;
-    color: #D24D57;
-    font-size:14px;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    text-transform: uppercase;
-    overflow: hidden;
-    letter-spacing: .08em;
-    border-radius: 0;
-    /*text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);*/
-    -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    transition: all 1s ease;
+.animated-button:link,
+.animated-button:visited {
+  position: relative;
+  display: block;
+  margin: 0px auto 0;
+  padding: 14px 15px;
+  color: #D24D57;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  letter-spacing: .08em;
+  border-radius: 0;    /*text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);*/
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
 }
-.animated-button:link:after, .animated-button:visited:after {
-    content: "";
-    position: absolute;
-    height: 0%;
-    left: 50%;
-    top: 50%;
-    width: 150%;
-    z-index: -1;
-    -webkit-transition: all 0.75s ease 0s;
-    -moz-transition: all 0.75s ease 0s;
-    -o-transition: all 0.75s ease 0s;
-    transition: all 0.75s ease 0s;
+
+.animated-button:link:after,
+.animated-button:visited:after {
+  content: "";
+  position: absolute;
+  height: 0%;
+  left: 50%;
+  top: 50%;
+  width: 150%;
+  z-index: -1;
+  -webkit-transition: all 0.75s ease 0s;
+  -moz-transition: all 0.75s ease 0s;
+  -o-transition: all 0.75s ease 0s;
+  transition: all 0.75s ease 0s;
 }
-.animated-button:link:hover, .animated-button:visited:hover {
-    color: #FFF;
-    text-shadow: none;
+
+.animated-button:link:hover,
+.animated-button:visited:hover {
+  color: #FFF;
+  text-shadow: none;
 }
-.animated-button:link:hover:after, .animated-button:visited:hover:after {
-    height: 450%;
+
+.animated-button:link:hover:after,
+.animated-button:visited:hover:after {
+  height: 450%;
 }
-.animated-button:link, .animated-button:visited {
-    position: relative;
-    display: block;
-    margin: 30px auto 0;
-    padding: 14px 15px;
-    color: #D24D57;
-    font-size:14px;
-    border-radius: 0;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    text-transform: uppercase;
-    overflow: hidden;
-    letter-spacing: .08em;
-    /*text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);*/
-    -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    transition: all 1s ease;
+
+.animated-button:link,
+.animated-button:visited {
+  position: relative;
+  display: block;
+  margin: 30px auto 0;
+  padding: 14px 15px;
+  color: #D24D57;
+  font-size: 14px;
+  border-radius: 0;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  letter-spacing: .08em;    /*text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);*/
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
 }
 
 .animated-button.victoria-one {
-    border: 2px solid #D24D57;
+  border: 2px solid #D24D57;
 }
+
 .animated-button.victoria-one:after {
-    background: #D24D57;
-    -moz-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
-    -ms-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
-    -webkit-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
-    transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+  background: #D24D57;
+  -moz-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+  -ms-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+  -webkit-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+  transform: translateX(-50%) translateY(-50%) rotate(-25deg);
 }
 
 .animated-button.victoria-four {
   border: 2px solid #D24D57;
 }
+
 .animated-button.victoria-four:after {
   background: #D24D57;
   opacity: .5;
@@ -190,6 +207,7 @@ footer {
   -webkit-transform: translateY(-50%) translateX(-50%) rotate(90deg);
   transform: translateY(-50%) translateX(-50%) rotate(90deg);
 }
+
 .animated-button.victoria-four:hover:after {
   opacity: 1;
   height: 600% !important;
