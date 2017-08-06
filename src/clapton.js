@@ -1,12 +1,16 @@
 const {remote, shell} = require('electron')
 
 const playerElement = document.querySelector("#player")
-const container = document.querySelector(".container")
+const containerElement = document.querySelector(".container")
 const openFileElement = document.querySelector("#open-file")
 const openTorrentElement = document.querySelector("#open-torrent")
+const versionElement = document.querySelector("#version")
 
-const linkTwitterElement = document.querySelector(".link-twitter")
-const linkContributeElement = document.querySelector(".link-contribute")
+const linkTwitterElement = document.querySelector("#link-twitter")
+const linkContributeElement = document.querySelector("#link-contribute")
+
+const version = require('./package.json').version
+versionElement.textContent = version
 
 function openVideoFile() {
   remote.dialog.showOpenDialog(remote.getCurrentWindow(), {
@@ -17,7 +21,7 @@ function openVideoFile() {
   }, (fileNames) => {
     if (fileNames && fileNames.length) {
       playerElement.classList.add('playing')
-      container.style.display = 'none'
+      containerElement.style.display = 'none'
 
       var player = new Clappr.Player({
         source: fileNames[0],

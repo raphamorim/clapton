@@ -1,6 +1,6 @@
 # Clapton
 
-> Just Another Player
+> Just Another Video Player
 
 ![Example](assets/images/clapton.png)
 

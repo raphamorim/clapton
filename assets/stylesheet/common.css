@@ -72,11 +72,13 @@ body {
 
 footer {
   position: absolute;
+  display: flex;
   width: 100%;
   bottom: 0;
   background: #E88B8C;
   padding: 5px;
   text-align: center;
+  justify-content: space-between;
 }
 
 footer a {
