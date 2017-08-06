@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "electron main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,7 +18,7 @@
     "VLC",
     "clappr"
   ],
-   "author": {
+  "author": {
     "name": "Raphael Amorim",
     "email": "rapha850@gmail.com",
     "url": "http://raphamorim.io"
@@ -27,9 +28,10 @@
     "url": "https://github.com/raphamorim/clapton/issues"
   },
   "homepage": "https://github.com/raphamorim/clapton#readme",
-  "devDependenciess": {
+  "devDependencies": {
     "electron": "^1.6.11",
-    "electron-packager": "^8.7.2"
+    "electron-packager": "^8.7.2",
+    "keymaster": "^1.6.2"
   },
   "engines": {
     "node": ">=4.0.0",
