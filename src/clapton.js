@@ -12,6 +12,28 @@ const linkContributeElement = document.querySelector("#link-contribute")
 const version = require('./package.json').version
 versionElement.textContent = version
 
+function play(filePath) {
+  playerElement.classList.add('playing')
+  containerElement.style.display = 'none'
+
+  var player = new Clappr.Player({
+    source: filePath,
+    parentId: "#player"
+  })
+
+  window.addEventListener('resize', function(e){
+    player.resize({
+      height: window.innerHeight,
+      width: window.innerWidth,
+    })
+  })
+
+  player.resize({
+    height: window.innerHeight,
+    width: window.innerWidth,
+  })
+}
+
 function openVideoFile() {
   remote.dialog.showOpenDialog(remote.getCurrentWindow(), {
     filters: [
@@ -20,25 +42,7 @@ function openVideoFile() {
     properties: [ 'openFile' ]
   }, (fileNames) => {
     if (fileNames && fileNames.length) {
-      playerElement.classList.add('playing')
-      containerElement.style.display = 'none'
-
-      var player = new Clappr.Player({
-        source: fileNames[0],
-        parentId: "#player"
-      })
-
-      window.addEventListener('resize', function(e){
-        player.resize({
-          height: window.innerHeight,
-          width: window.innerWidth,
-        })
-      })
-
-      player.resize({
-        height: window.innerHeight,
-        width: window.innerWidth,
-      })
+      play(fileNames[0])
     }
   })
 }
