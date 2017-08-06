@@ -1,14 +1,47 @@
 body {
   background: white;
-  font-family: 'Varela', sans-serif;
+  font-family: Helvetica, serif;
+}
+
+.container {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .glitch {
-  color: black;
+  font-family: 'Space Mono', monospace;
+  color: #E88B8C;
   font-size: 100px;
+  letter-spacing: 0.2em;
   position: relative;
-  width: 400px;
+  width: 530px;
   margin: 0 auto;
+}
+
+.banner {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+}
+
+.banner a {
+  color: #E88B8C;
+  font-size: 18px;
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 1px dashed #E88B8C;
+  transition: all 300ms ease;
+}
+
+.banner a:hover {
+  color: #00ffff;
+  border-bottom: 1px solid #00ffff;
 }
 
 @keyframes noise-anim {
@@ -82,7 +115,7 @@ body {
   left: 2px;
   text-shadow: -1px 0 red;
   top: 0;
-  color: black;
+  color: #E88B8C;
   background: white;
   overflow: hidden;
   clip: rect(0, 900px, 0, 0);
@@ -160,9 +193,171 @@ body {
   left: -2px;
   text-shadow: 1px 0 blue;
   top: 0;
-  color: black;
+  color: #E88B8C;
   background: white;
   overflow: hidden;
   clip: rect(0, 900px, 0, 0);
   animation: noise-anim-2 3s infinite linear alternate-reverse;
+}
+
+.btn-link {
+  position: relative;
+  display: inline-block;
+  color: #FFF;
+  font-size: 24px;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  z-index: 1;
+}
+.btn-link:before,
+.btn-link:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.btn-link:before {
+  background-color: #00ffff;
+  z-index: -1;
+}
+.btn-link:after {
+  background-color: #ff00ff;
+  z-index: -2;
+}
+.btn-link:hover .link-inner {
+  -webkit-animation: glitchy 0.3s ease 1;
+          animation: glitchy 0.3s ease 1;
+}
+.btn-link:hover:before {
+  -webkit-animation: glitchy 0.3s ease 0.3s infinite;
+          animation: glitchy 0.3s ease 0.3s infinite;
+}
+.btn-link:hover:after {
+  -webkit-animation: glitchy 0.3s ease infinite reverse;
+          animation: glitchy 0.3s ease infinite reverse;
+}
+.link-inner {
+  display: block;
+  height: 100%;
+  background-color: #E88B8C;
+  padding: 15px 25px;
+}
+.text-link {
+  position: relative;
+  display: inline-block;
+  font-size: 45px;
+  text-decoration: none;
+  color: #fff;
+  z-index: 1;
+}
+.text-link:before,
+.text-link:after {
+  content: attr(data-content);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.text-link:before {
+  color: #00ffff;
+  z-index: -1;
+}
+.text-link:after {
+  color: #ff00ff;
+  z-index: -2;
+}
+.text-link:hover:before {
+  -webkit-animation: glitchy 0.3s ease 0.3s infinite;
+          animation: glitchy 0.3s ease 0.3s infinite;
+}
+.text-link:hover:after {
+  -webkit-animation: glitchy 0.3s ease infinite reverse;
+          animation: glitchy 0.3s ease infinite reverse;
+}
+.line-link {
+  position: relative;
+  display: inline-block;
+  font-size: 24px;
+  text-decoration: none;
+  letter-spacing: 0.10em;
+  color: #fff;
+  font-weight: lighter;
+  z-index: 1;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.75);
+  padding-bottom: 10px;
+}
+.line-link:before,
+.line-link:after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  visibility: hidden;
+}
+.line-link:before {
+  background-color: #00ffff;
+  z-index: -1;
+}
+.line-link:after {
+  background-color: #ff00ff;
+  z-index: -2;
+}
+.line-link:hover:before {
+  visibility: visible;
+  -webkit-animation: line-glitchy 0.3s ease 0.3s infinite;
+          animation: line-glitchy 0.3s ease 0.3s infinite;
+}
+.line-link:hover:after {
+  visibility: visible;
+  -webkit-animation: line-glitchy 0.3s ease infinite reverse;
+          animation: line-glitchy 0.3s ease infinite reverse;
+}
+@-webkit-keyframes glitchy {
+  0% {
+    -webkit-transform: translate(-2px, 2px);
+            transform: translate(-2px, 2px);
+  }
+  25% {
+    -webkit-transform: translate(-2px, -2px);
+            transform: translate(-2px, -2px);
+  }
+  50% {
+    -webkit-transform: translate(2px, 2px);
+            transform: translate(2px, 2px);
+  }
+  75% {
+    -webkit-transform: translate(2px, -2px);
+            transform: translate(2px, -2px);
+  }
+  100% {
+    -webkit-transform: translate(-2px, 2px);
+            transform: translate(-2px, 2px);
+  }
+}
+@keyframes glitchy {
+  0% {
+    -webkit-transform: translate(-2px, 2px);
+            transform: translate(-2px, 2px);
+  }
+  25% {
+    -webkit-transform: translate(-2px, -2px);
+            transform: translate(-2px, -2px);
+  }
+  50% {
+    -webkit-transform: translate(2px, 2px);
+            transform: translate(2px, 2px);
+  }
+  75% {
+    -webkit-transform: translate(2px, -2px);
+            transform: translate(2px, -2px);
+  }
+  100% {
+    -webkit-transform: translate(-2px, 2px);
+            transform: translate(-2px, 2px);
+  }
 }
