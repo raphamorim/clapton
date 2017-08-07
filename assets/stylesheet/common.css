@@ -11,10 +11,21 @@
   box-sizing: border-box;
 }
 
-body {
+/* latin */
+@font-face {
+  font-family: 'Space Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Space Mono'), local('SpaceMono-Regular'), url(../fonts/space-mono.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
+html, body {
   background: #F7F7F7;
   color: #871B1D;
-  font-family: 'Roboto', sans-serif;  /*font-family: 'Space Mono', monospace;*/
+  -webkit-app-region: drag;
+  font-family: Helvetica, sans-serif;
+  overflow: auto;
 }
 
 .container {
@@ -71,7 +82,7 @@ body {
 }
 
 footer {
-  position: absolute;
+  position: fixed;
   display: flex;
   width: 100%;
   bottom: 0;
@@ -84,6 +95,7 @@ footer {
 footer a {
   text-decoration: none;
   color: white;
+  font-weight: lighter;
   transition: all 300ms ease;
 }
 
@@ -125,7 +137,7 @@ footer a:hover {
   padding: 14px 15px;
   color: #D24D57;
   font-size: 14px;
-  font-weight: bold;
+  font-weight: normal;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
@@ -173,7 +185,7 @@ footer a:hover {
   color: #D24D57;
   font-size: 14px;
   border-radius: 0;
-  font-weight: bold;
+  font-weight: normal;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;

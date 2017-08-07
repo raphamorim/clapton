@@ -1,9 +1,6 @@
-const electron = require('electron')
+const { app, BrowserWindow } = require('electron')
 
-const resolve = require('path').resolve
-const app = electron.app
-const BrowserWindow = electron.BrowserWindow
-
+const { resolve } = require('path')
 const path = require('path')
 const url = require('url')
 
@@ -31,7 +28,7 @@ function createWindow() {
     vibrancy: "ultra-dark",
     acceptFirstMouse: true,
     show: false,
-    // icon: resolve(__dirname + '/assets/images/logo-128.icns')
+    icon: resolve(__dirname + '/assets/images/icon.icns')
   })
 
   mainWindow.loadURL(url.format({

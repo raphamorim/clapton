@@ -1,11 +1,12 @@
 {
   "name": "clapton",
   "version": "0.1.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Yet Another OpenSource Desktop Video Player",
+  "main": "main.js",
   "scripts": {
     "start": "electron main.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "pack:osx": "electron-packager ./ Clapton --plataform=darwin --out=builds --overwrite --icon=./assets/images/icon.icns",
+    "pack:all": "electron-packager ./ Clapton --all --out=builds --overwrite --icon=./assets/images/icon.icns"
   },
   "repository": {
     "type": "git",
@@ -29,9 +30,11 @@
   },
   "homepage": "https://github.com/raphamorim/clapton#readme",
   "devDependencies": {
+    "electron-packager": "^8.7.2"
+  },
+  "dependencies": {
     "clappr": "^0.2.71",
-    "electron": "^1.6.11",
-    "electron-packager": "^8.7.2",
+    "electron": "^1.7.5",
     "keymaster": "^1.6.2"
   },
   "engines": {

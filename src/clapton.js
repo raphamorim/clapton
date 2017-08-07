@@ -1,4 +1,5 @@
-const {remote, shell} = require('electron')
+const remote = require('electron').remote
+const shell = require('electron').shell
 
 const playerElement = document.querySelector("#player")
 const containerElement = document.querySelector(".container")
@@ -12,26 +13,21 @@ const linkContributeElement = document.querySelector("#link-contribute")
 const version = require('./package.json').version
 versionElement.textContent = version
 
+let PlayerInstance
+
 function play(filePath) {
   playerElement.classList.add('playing')
   containerElement.style.display = 'none'
 
-  var player = new Clappr.Player({
+  PlayerInstance = new Clappr.Player({
     source: filePath,
     parentId: "#player"
   })
 
-  window.addEventListener('resize', function(e){
-    player.resize({
-      height: window.innerHeight,
-      width: window.innerWidth,
-    })
-  })
+  window.addEventListener('resize', resizePlayer.bind(this))
+  document.addEventListener('webkitfullscreenchange', resizePlayer.bind(this))
 
-  player.resize({
-    height: window.innerHeight,
-    width: window.innerWidth,
-  })
+  resizePlayer()
 }
 
 function openVideoFile() {
@@ -44,6 +40,13 @@ function openVideoFile() {
     if (fileNames && fileNames.length) {
       play(fileNames[0])
     }
+  })
+}
+
+function resizePlayer() {
+  PlayerInstance.resize({
+    height: window.innerHeight,
+    width: window.innerWidth,
   })
 }
 
