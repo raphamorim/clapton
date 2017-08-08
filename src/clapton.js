@@ -75,3 +75,12 @@ key('⌘+o', (event, handler) => {
   // TODO: Multiple files and diretory
   openVideoFile()
 })
+
+document.ondragover = document.ondrop = (ev) => {
+  ev.preventDefault()
+}
+
+document.body.ondrop = function(ev) {
+  play(ev.dataTransfer.files[0].path)
+  ev.preventDefault()
+}
