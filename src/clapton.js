@@ -21,7 +21,18 @@ function play(filePath) {
 
   PlayerInstance = new Clappr.Player({
     source: filePath,
-    parentId: "#player"
+    parent: playerElement,
+    autoPlay: true,
+    // poster:
+    // chromeless: 'true',
+    mediacontrol: {
+      seekbar: "#E88B8C",
+      buttons: "#f9dbdc"
+    },
+    hlsjsConfig: {
+      enableWorker: true
+    },
+    plugins: [AirPlayPlugin]
   })
 
   window.addEventListener('resize', resizePlayer.bind(this))
