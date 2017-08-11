@@ -237,8 +237,14 @@ footer a:hover {
   transform: translateX(-50%) translateY(-50%) rotate(25deg);
 }
 
+#player {
+  z-index: -9999;
+  display: none;
+}
+
 #player.playing {
   position: absolute;
+  display: block;
   top: 0;
   left: 0;
   width: 100%;

@@ -39,14 +39,11 @@ function playFromStream(torrentFile) {
 }
 
 function play(filePath) {
-  playerElement.classList.add('playing')
-  containerElement.style.display = 'none'
-
-  PlayerInstance = new Clappr.Player({
-    source: filePath,
+  let config = {
+    source: filePath[0],
     parent: playerElement,
     autoPlay: true,
-    // poster:
+    // poster: '',
     // chromeless: 'true',
     mediacontrol: {
       seekbar: "#E88B8C",
@@ -55,13 +52,40 @@ function play(filePath) {
     hlsjsConfig: {
       enableWorker: true
     },
-    // plugins: [AirPlayPlugin]
-  })
+    plugins: [
+      PlaylistPlugin
+    ]
+  }
+
+  playerElement.classList.add('playing')
+  containerElement.style.display = 'none'
+
+  if (filePath.length > 1) {
+    config.playlist = {
+      sources: filePath.map(i => i = {source: i})
+    }
+
+    delete config.source
+  }
+
+  if (PlayerInstance) {
+    PlayerInstance.configure(config)
+  } else {
+    PlayerInstance = new Clappr.Player(config)
+  }
 
   window.addEventListener('resize', resizePlayer.bind(this))
   document.addEventListener('webkitfullscreenchange', resizePlayer.bind(this))
 
   resizePlayer()
+}
+
+function finishPlayer() {
+  playerElement.classList.remove('playing')
+  containerElement.style.display = 'block'
+
+  if (PlayerInstance)
+    PlayerInstance.stop()
 }
 
 function openVideoFile() {
@@ -75,13 +99,13 @@ function openVideoFile() {
         ]
       }
     ],
-    properties: [ 'openFile' ]
+    properties: [ 'openFile', 'multiSelections' ]
   }, (fileNames) => {
     if (fileNames && fileNames.length) {
       if (fileNames[0].indexOf('torrent') >= 0)
         playFromStream(fileNames[0])
       else
-        play(fileNames[0])
+        play(fileNames)
     }
   })
 }
@@ -99,15 +123,11 @@ function openExternal(e) {
 }
 
 linkContributeElement.addEventListener('click', openExternal)
-
 linkTwitterElement.addEventListener('click', openExternal)
-
 openFileElement.addEventListener('click', openVideoFile)
 
-key('⌘+o', (event, handler) => {
-  // TODO: Multiple files and diretory
-  openVideoFile()
-})
+key('⌘+o', (event, handler) => openVideoFile())
+key('esc', (event, handler) => finishPlayer())
 
 document.ondragover = document.ondrop = (ev) => {
   ev.preventDefault()
