@@ -25,7 +25,7 @@ function createWindow() {
     hasShadow: true,
     debug: false,
     darkTheme: true,
-    vibrancy: "ultra-dark",
+    vibrancy: 'ultra-dark',
     acceptFirstMouse: true,
     show: false,
     icon: resolve(__dirname + '/assets/images/icon.icns')
@@ -38,7 +38,7 @@ function createWindow() {
   }))
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools()
 
   mainWindow.on('closed', function() {
     mainWindow = null

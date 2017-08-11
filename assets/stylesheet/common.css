@@ -46,7 +46,10 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: 1s jackInTheBox linear;
+  animation: 2s jello ease;
+  animation-iteration-count: 2;
+  animation-direction: alternate, reverse;
+  animation-delay: .1s;
   margin-top: -20px;
   margin-bottom: 40px;
 }
@@ -103,31 +106,45 @@ footer a:hover {
   opacity: 0.8;
 }
 
-@keyframes jackInTheBox {
-  from {
-    opacity: 0;
-    transform: scale(0.1) rotate(30deg);
-    transform-origin: center bottom;
+@keyframes jello {
+  from, 11.1%, to {
+    transform: none;
   }
 
-  50% {
-    transform: rotate(-10deg);
+  22.2% {
+    transform: skewX(-12.5deg) skewY(-12.5deg);
   }
 
-  70% {
-    transform: rotate(3deg);
+  33.3% {
+    transform: skewX(6.25deg) skewY(6.25deg);
   }
 
-  to {
-    opacity: 1;
-    transform: scale(1);
+  44.4% {
+    transform: skewX(-3.125deg) skewY(-3.125deg);
   }
 
+  55.5% {
+    transform: skewX(1.5625deg) skewY(1.5625deg);
+  }
+
+  66.6% {
+    transform: skewX(-0.78125deg) skewY(-0.78125deg);
+  }
+
+  77.7% {
+    transform: skewX(0.390625deg) skewY(0.390625deg);
+  }
+
+  88.8% {
+    transform: skewX(-0.1953125deg) skewY(-0.1953125deg);
+  }
 }
 
-.jackInTheBox {
-  animation-name: jackInTheBox;
+.jello {
+  animation-name: jello;
+  transform-origin: center;
 }
+
 
 .animated-button:link,
 .animated-button:visited {
@@ -209,28 +226,10 @@ footer a:hover {
   transform: translateX(-50%) translateY(-50%) rotate(-25deg);
 }
 
-.animated-button.victoria-four {
+.animated-button.victoria-two {
   border: 2px solid #D24D57;
 }
-
-.animated-button.victoria-four:after {
-  background: #D24D57;
-  opacity: .5;
-  -moz-transform: translateY(-50%) translateX(-50%) rotate(90deg);
-  -ms-transform: translateY(-50%) translateX(-50%) rotate(90deg);
-  -webkit-transform: translateY(-50%) translateX(-50%) rotate(90deg);
-  transform: translateY(-50%) translateX(-50%) rotate(90deg);
-}
-
-.animated-button.victoria-four:hover:after {
-  opacity: 1;
-  height: 600% !important;
-}
-
-a.animated-button.victoria-two {
-  border: 2px solid #D24D57;
-}
-a.animated-button.victoria-two:after {
+.animated-button.victoria-two:after {
   background: #D24D57;
   -moz-transform: translateX(-50%) translateY(-50%) rotate(25deg);
   -ms-transform: translateX(-50%) translateY(-50%) rotate(25deg);

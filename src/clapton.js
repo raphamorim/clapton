@@ -1,10 +1,12 @@
 const remote = require('electron').remote
 const shell = require('electron').shell
 
+const path = require('path')
+const WebTorrent = require('webtorrent')
+
 const playerElement = document.querySelector('#player')
 const containerElement = document.querySelector('.container')
 const openFileElement = document.querySelector('#open-file')
-const openTorrentElement = document.querySelector('#open-torrent')
 const versionElement = document.querySelector('#version')
 
 const linkTwitterElement = document.querySelector('#link-twitter')
@@ -13,7 +15,28 @@ const linkContributeElement = document.querySelector('#link-contribute')
 const version = require('./package.json').version
 versionElement.textContent = version
 
-let PlayerInstance
+let PlayerInstance, ClientTorrentInstance
+
+function playFromStream(torrentFile) {
+  ClientTorrentInstance = new WebTorrent()
+  // var magnetURI = 'magnet:?xt=urn:btih:D9870CA440CD79425D47E0EB4E2DEC564A9E94D9&dn=Deadpool%202016%20WEB-DL%201080p%20Legendado%20-%20WWW.THEPIRATEFILMES.COM&tr=udp%3a%2f%2ftracker.trackerfix.com%3a80%2fannounce'
+
+  ClientTorrentInstance.add(torrentFile, function(torrent) {
+    // console.log('Client is downloading:', torrent.infoHash)
+    console.log(ClientTorrentInstance.progress)
+
+    torrent.files.forEach(function(file) {
+      // Display the file by appending it to the DOM. Supports video, audio, images, and
+      // more. Specify a container element (CSS selector or reference to DOM node).
+      if (file.path.indexOf('mp4') >= 0)
+        return play(
+          path.resolve(file._torrent.path, file.path)
+        )
+
+      // file.appendTo('body')
+    })
+  })
+}
 
 function play(filePath) {
   playerElement.classList.add('playing')
@@ -32,7 +55,7 @@ function play(filePath) {
     hlsjsConfig: {
       enableWorker: true
     },
-    plugins: [AirPlayPlugin]
+    // plugins: [AirPlayPlugin]
   })
 
   window.addEventListener('resize', resizePlayer.bind(this))
@@ -48,14 +71,17 @@ function openVideoFile() {
       {
         name: 'Movies',
         extensions: [
-          'mp4', 'webm', 'hls', 'mp3', 'jpg', 'png', 'gif'
+          'mp4', 'webm', 'hls', 'mp3', 'jpg', 'png', 'gif', 'torrent'
         ]
       }
     ],
     properties: [ 'openFile' ]
   }, (fileNames) => {
     if (fileNames && fileNames.length) {
-      play(fileNames[0])
+      if (fileNames[0].indexOf('torrent') >= 0)
+        playFromStream(fileNames[0])
+      else
+        play(fileNames[0])
     }
   })
 }
@@ -77,10 +103,6 @@ linkContributeElement.addEventListener('click', openExternal)
 linkTwitterElement.addEventListener('click', openExternal)
 
 openFileElement.addEventListener('click', openVideoFile)
-
-openTorrentElement.addEventListener('click', () => {
-  alert('Feature under development!')
-})
 
 key('⌘+o', (event, handler) => {
   // TODO: Multiple files and diretory

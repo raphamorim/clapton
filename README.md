@@ -1,8 +1,12 @@
 # Clapton
 
-> Just Another Video Player
+> Yet Another OpenSource Media Player
 
 ![Example](assets/images/clapton.png)
+
+## Extending Clappr
+
+[Generator-Clappr-Plugin](https://github.com/clappr/generator-clappr-plugin)
 
 ## Supported Formats
 
@@ -14,7 +18,7 @@ Beta Clapton | ✔ | ✔ | ✔ |  ✔ | ![dash](http://flv.io/external3.png) | !
 
 ## Credits
 
-Created by [@raphamundi](https://twitter.com/raphamundi).
+Clapton was created by [@raphamundi](https://twitter.com/raphamundi).
 
-Powered by [Electron](https://github.com/electron/electron) and [Clappr](github.com/clappr/clappr).
+Powered by [Electron](https://github.com/electron/electron), [Clappr](github.com/clappr/clappr) and [WebTorrent](https://github.com/webtorrent/webtorrent).
 
