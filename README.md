@@ -1,6 +1,6 @@
 # Clapton
 
-> Yet Another OpenSource Media Player
+> Yet Another Open Source Media Player
 
 ![Example](assets/images/clapton.png)
 
@@ -10,9 +10,9 @@
 
 ## Supported Formats
 
-Format       |HLS|MP4|MP3|WEBM| DASH | RTMP | JPG/PNG/GIF |
+Version       |HLS|MP4|MP3|WEBM| DASH | RTMP | JPG/PNG/GIF |
 -------------|---|---|---|----|------|------|-------------|
-Beta Clapton | ✔ | ✔ | ✔ |  ✔ | ![dash](http://flv.io/external3.png) | ![rtmp](http://flv.io/external3.png) | ✔
+ 0.1.8 | ✔ | ✔ | ✔ |  ✔ | ![dash](http://flv.io/external3.png) | ![rtmp](http://flv.io/external3.png) | ✔
 
 ![rtmp](http://flv.io/external3.png) means that the support is made by an external plugin.
 
