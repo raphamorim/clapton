@@ -1,7 +1,7 @@
 {
   "name": "clapton",
-  "version": "0.1.0",
-  "description": "Yet Another OpenSource Desktop Video Player",
+  "version": "0.1.8",
+  "description": "Yet Another OpenSource Desktop Media Player",
   "main": "main.js",
   "scripts": {
     "start": "electron main.js",
@@ -35,7 +35,9 @@
   "dependencies": {
     "clappr": "^0.2.71",
     "electron": "^1.7.5",
-    "keymaster": "^1.6.2"
+    "electron-simple-updater": "^1.2.1",
+    "keymaster": "^1.6.2",
+    "webtorrent": "^0.98.19"
   },
   "engines": {
     "node": ">=4.0.0",

@@ -8,12 +8,18 @@ const playerElement = document.querySelector('#player')
 const containerElement = document.querySelector('.container')
 const openFileElement = document.querySelector('#open-file')
 const versionElement = document.querySelector('#version')
+const videoSampleElement = document.querySelector('#video-sample')
+
+const videoInfoElement = document.querySelector('#video-info')
+const videoInfoThumbElement = document.querySelector('#video-info-thumb')
 
 const linkTwitterElement = document.querySelector('#link-twitter')
-const linkContributeElement = document.querySelector('#link-contribute')
 
-const version = require('./package.json').version
-versionElement.textContent = version
+const Clapton = {
+  version: require('./package.json').version,
+}
+
+versionElement.textContent = Clapton.version
 
 let PlayerInstance, ClientTorrentInstance
 
@@ -32,8 +38,6 @@ function playFromStream(torrentFile) {
         return play(
           path.resolve(file._torrent.path, file.path)
         )
-
-      // file.appendTo('body')
     })
   })
 }
@@ -46,8 +50,8 @@ function play(filePath) {
     // poster: '',
     // chromeless: 'true',
     mediacontrol: {
-      seekbar: "#E88B8C",
-      buttons: "#f9dbdc"
+      seekbar: "#2DC0D3",
+      buttons: "#FC4C00"
     },
     hlsjsConfig: {
       enableWorker: true
@@ -74,23 +78,46 @@ function play(filePath) {
     PlayerInstance = new Clappr.Player(config)
   }
 
+  videoSampleElement.remove()
+
   window.addEventListener('resize', resizePlayer.bind(this))
   document.addEventListener('webkitfullscreenchange', resizePlayer.bind(this))
 
   resizePlayer()
 }
 
+function resumePlayer(ev) {
+  playerElement.classList.add('playing')
+  containerElement.style.display = 'none'
+
+  PlayerInstance.play()
+
+  videoInfoElement.removeEventListener('click', resumePlayer)
+}
+
 function finishPlayer() {
   playerElement.classList.remove('playing')
   containerElement.style.display = 'block'
 
+  let videoPath = path.basename(PlayerInstance._options.source)
+
+  // TODO: create nodeElement
+  videoInfoElement.innerHTML = `
+    <p>RESUME:</p>
+    <p>${videoPath}</p>
+  `
+  videoInfoElement.style.display = 'block'
+  videoInfoThumbElement.style.display = 'block'
+
+  videoInfoElement.addEventListener('click', resumePlayer)
+
   if (PlayerInstance)
-    PlayerInstance.stop()
+    PlayerInstance.pause()
 }
 
 function openVideoFile() {
   remote.dialog.showOpenDialog(remote.getCurrentWindow(), {
-    // TODO: 'mkv', 'avi'
+    // TODO: support 'mkv', 'avi'
     filters: [
       {
         name: 'Movies',
@@ -122,11 +149,14 @@ function openExternal(e) {
   shell.openExternal(e.target.href)
 }
 
-linkContributeElement.addEventListener('click', openExternal)
 linkTwitterElement.addEventListener('click', openExternal)
 openFileElement.addEventListener('click', openVideoFile)
 
 key('⌘+o', (event, handler) => openVideoFile())
+
+// Handle Preferences
+// key('⌘+,', (event, handler) => )
+
 key('esc', (event, handler) => finishPlayer())
 
 document.ondragover = document.ondrop = (ev) => {

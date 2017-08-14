@@ -10,9 +10,14 @@
   <div id="player"></div>
 
   <div id="sample">
-    <video controls="false" muted autoplay loop height="150%" width="100%">
-      <source src="assets/sample/highline.mp4" type="video/mp4">
+    <img id="video-info-thumb" src="assets/images/video-info-thumb.png" />
+    <video preload="metadata" id="video-sample" controls="false" muted autoplay loop height="150%" width="100%">
+      <source src="assets/sample/highline.webm" type="video/webm">
     </video>
+    <div id="video-info">
+      <p>RESUME:</p>
+      <p>MOVIE 8/13</p>
+    </div>
   </div>
 
   <div class="container">
@@ -20,24 +25,21 @@
     <h1 class="title">Clapton</h1>
     <div class="bar">
       <div class="bar-item" id="open-file">
-        <a href="#" class="animated-button victoria-one">Open File</a>
-      </div>
-      <div class="bar-item">
-        <a href="https://github.com/raphamorim/clapton" id="link-contribute" class="animated-button victoria-two">Contribute</a>
+        <button class="btn btn--stripe">~ open ~</button>
       </div>
     </div>
   </div>
 
   <footer>
     <p>
-      <a id="link-twitter" href="https://twitter.com/raphamundi" target="_blank">@raphamundi</a>
+      by <a id="link-twitter" href="https://twitter.com/raphamundi" target="_blank">@raphamundi</a>
     </p>
     <p id="version"></p>
   </footer>
 
   <script type="text/javascript" src="node_modules/keymaster/keymaster.js"></script>
-  <script type="text/javascript" src="node_modules/clappr/dist/clappr.js"></script>
-  <script type="text/javascript" src="assets/javascript/clappr-playlist-plugin.min.js"></script>
-  <script type="text/javascript" src="src/clapton.js" async></script>
+  <script type="text/javascript" src="node_modules/clappr/dist/clappr.min.js"></script>
+  <script type="text/javascript" src="assets/javascript/clappr-playlist-plugin.min.js" async></script>
+  <script type="text/javascript" src="src/clapton.js"></script>
 </body>
 </html>
