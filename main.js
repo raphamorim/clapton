@@ -8,8 +8,8 @@ let mainWindow
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    minWidth: 900,
-    minHeight: 300,
+    minWidth: 600,
+    minHeight: 400,
     height: 620,
     width: 800,
     resizable: true,
@@ -18,7 +18,7 @@ function createWindow() {
     //macOnly
     titleBarStyle: 'hidden-inset',
     title: 'Clapton',
-    backgroundColor: '#E88B8C',
+    backgroundColor: '#FFFBD5',
     // we want to go frameless on windows and linux
     frame: process.platform === 'darwin',
     transparent: true,
