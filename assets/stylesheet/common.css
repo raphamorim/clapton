@@ -27,7 +27,7 @@ html, body {
   color: white;
   -webkit-app-region: drag;
   font-family: Helvetica, sans-serif;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .container {
@@ -96,8 +96,8 @@ html, body {
 
 #sample {
   position: relative;
-  margin-top: -120px;
-  height: 460px;
+  margin-top: -8em;
+  height: 29em;
   background: #000;
   overflow: hidden;
 }
@@ -288,4 +288,22 @@ footer a:hover {
 
 *::selection {
   background: #2DC0D3;
+}
+
+@media (max-height: 600px)
+{
+  footer {
+    display: none;
+  }
+
+  #sample {
+    height: 400px;
+  }
+}
+
+@media (min-width: 1080px) and (min-height: 780px) {
+  #sample {
+    margin-top: -12em;
+    height: 43em;
+  }
 }
