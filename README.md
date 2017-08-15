@@ -1,4 +1,4 @@
-# Clapton
+# Clapton ⛱️
 
 > Yet Another Open Source Media Player
 
@@ -8,7 +8,7 @@ Clapton is a Open Source Media Player witch runs on [Clappr](https://github.com/
 
 ## Features
 
-- Is another Open Source Media Player (yey te-hehe)
+- Another Open Source Media Player 🦄 🦄 🦄
 - Hackable
 - Support stream of Torrents
 - Allows multiples Source (automatic playlist)
@@ -44,17 +44,20 @@ Sample:
 ```
 
 Note: `.claptonconfig` is optional.
+Note2: Plugins will be available only at `>= Clapton 0.2.0`
 
-## Extending Clappr
+## Create a Plugin for Clapton
 
-[Generator-Clappr-Plugin](https://github.com/clappr/generator-clappr-plugin)
+Plugins will be available only at `>= Clapton 0.2.0`
 
-## Clappr External Plugins
+#### [Generator-Clappr-Plugin](https://github.com/clappr/generator-clappr-plugin)
+
+## Migrating Clappr External Plugins to Clapton
 
 Most part of current plugins are being tested on `Clapton 0.2.0`. Help us to integrate.
 
 |Plugin         |Status|URL|
-|-----------------------|--------|-------------------------------|--------------------------------------------------------|
+|-----------------------|---------------------------------------|--------------------------------------------------------|
 |Thumbnails on seekbar| WIP| https://github.com/tjenkinson/clappr-thumbnails-plugin |
 |Markers       | WIP| https://github.com/tjenkinson/clappr-markers-plugin |
 |Level Selector| WIP| https://github.com/clappr/clappr-level-selector-plugin |
