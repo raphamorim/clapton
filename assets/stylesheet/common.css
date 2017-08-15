@@ -77,6 +77,23 @@ html, body {
   width: 100%;
 }
 
+#status {
+  position: absolute;
+  right: 0;
+  padding: 14px;
+  background: #2DC0D3;
+  z-index: 99999;
+  text-transform: uppercase;
+  visibility: hidden;
+  opacity: 0.0;
+  transition: all 300ms ease;
+}
+
+#status.downloading {
+  opacity: 0.7;
+  visibility: visible;
+}
+
 #sample {
   position: relative;
   margin-top: -120px;
