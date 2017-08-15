@@ -27,14 +27,14 @@ Sample:
 
 ```json
 "defaults": {
-  "source": "absolute-path-to-my-video",
-  "colors": {
+  "source": "absolute-path-to-my-video",
+  "colors": {
     "primaryColor": "blue",
     "secondColor": "red"
   }
 },
 "plugins": {
-  "my-clappr-plugin": "absoulute-path-to-my-plugin"
+  "my-clappr-plugin": "absoulute-path-to-my-plugin"
 }
 ```
 
