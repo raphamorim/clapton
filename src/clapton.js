@@ -2,29 +2,50 @@ const remote = require('electron').remote
 const shell = require('electron').shell
 
 const path = require('path')
+const tryRequire = require('try-require')
 const WebTorrent = require('webtorrent')
 
 const playerElement = document.querySelector('#player')
-const statusElement = document.querySelector('#status')
 const containerElement = document.querySelector('.container')
-const openFileElement = document.querySelector('#open-file')
-const versionElement = document.querySelector('#version')
-const videoSampleElement = document.querySelector('#video-sample')
-
 const videoInfoElement = document.querySelector('#video-info')
-const videoInfoThumbElement = document.querySelector('#video-info-thumb')
-
-const linkTwitterElement = document.querySelector('#link-twitter')
-
-const Clapton = {
-  version: require('./package.json').version,
-}
-
-versionElement.textContent = Clapton.version
 
 let PlayerInstance, ClientTorrentInstance
 
+let Config = {
+  defaults: {
+    theaterSource: null,
+  },
+  version: require('./package.json').version,
+}
+
+function InitClapton() {
+  const versionElement = document.querySelector('#version')
+  versionElement.textContent = Config.version
+
+  initListeners()
+
+  const claptonConfig = tryRequire(`${process.env['HOME']}/claptonconfig.json`)
+  if (!claptonConfig)
+    return
+
+  Config = Object.assign({}, Config, claptonConfig)
+  const { theaterSource } = Config.defaults
+  const videoSampleElement = document.querySelector('#video-sample')
+
+  if (theaterSource) {
+    videoSampleElement.pause()
+    const sourceElement = document.createElement('source')
+    sourceElement.setAttribute('src', theaterSource)
+    videoSampleElement.insertBefore(sourceElement, videoSampleElement.children[0])
+    videoSampleElement.load()
+    videoSampleElement.play()
+  }
+
+}
+
 function playFromStream(torrentFile) {
+  const statusElement = document.querySelector('#status')
+
   ClientTorrentInstance = new WebTorrent()
   // var magnetURI = 'magnet:?xt=urn:btih:D9870CA440CD79425D47E0EB4E2DEC564A9E94D9&dn=Deadpool%202016%20WEB-DL%201080p%20Legendado%20-%20WWW.THEPIRATEFILMES.COM&tr=udp%3a%2f%2ftracker.trackerfix.com%3a80%2fannounce'
 
@@ -51,7 +72,7 @@ function playFromStream(torrentFile) {
   })
 }
 
- class MyMediaControl extends Clappr.MediaControl {
+class MyMediaControl extends Clappr.MediaControl {
   get template() {
     return Clappr.template(
       `<div>My HTML here based on clappr/src/components/media_control/public/media-control.html</div>`
@@ -68,6 +89,8 @@ function playFromStream(torrentFile) {
 }
 
 function play(filePaths) {
+  const videoSampleElement = document.querySelector('#video-sample')
+
   let config = {
     source: filePaths[0],
     parent: playerElement,
@@ -131,7 +154,9 @@ function resumePlayer(ev) {
   videoInfoElement.removeEventListener('click', resumePlayer)
 }
 
-function finishPlayer() {
+function stopPlayer(ev, target) {
+  const videoInfoThumbElement = document.querySelector('#video-info-thumb')
+
   playerElement.classList.remove('playing')
   containerElement.style.display = 'block'
 
@@ -185,21 +210,30 @@ function openExternal(e) {
   shell.openExternal(e.target.href)
 }
 
-linkTwitterElement.addEventListener('click', openExternal)
-openFileElement.addEventListener('click', openVideoFile)
+function initListeners() {
+  const linkTwitterElement = document.querySelector('#link-twitter')
+  const openFileElement = document.querySelector('#open-file')
 
-key('⌘+o', (event, handler) => openVideoFile())
+  linkTwitterElement.addEventListener('click', openExternal)
+  openFileElement.addEventListener('click', openVideoFile)
 
-// Handle Preferences
-// key('⌘+,', (event, handler) => )
+  document.ondragover = document.ondrop = (ev) => {
+    ev.preventDefault()
+  }
 
-key('esc', (event, handler) => finishPlayer())
+  document.body.ondrop = function(ev) {
+    play(ev.dataTransfer.files[0].path)
+    ev.preventDefault()
+  }
 
-document.ondragover = document.ondrop = (ev) => {
-  ev.preventDefault()
+  // Handle OpenFile
+  key('⌘+o', openVideoFile)
+
+  // Handle Preferences
+  // key('⌘+,',)
+
+  // StopPlayer
+  key('esc', stopPlayer)
 }
 
-document.body.ondrop = function(ev) {
-  play(ev.dataTransfer.files[0].path)
-  ev.preventDefault()
-}
+InitClapton()

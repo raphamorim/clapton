@@ -27,7 +27,7 @@ Sample:
 
 ```json
 "defaults": {
-  "source": "absolute-path-to-my-video",
+  "theaterSource": "absolute-path-to-my-video",
   "colors": {
     "primaryColor": "blue",
     "secondColor": "red"
