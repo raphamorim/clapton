@@ -40,7 +40,6 @@ function InitClapton() {
     videoSampleElement.load()
     videoSampleElement.play()
   }
-
 }
 
 function playFromStream(torrentFile) {

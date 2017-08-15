@@ -4,7 +4,13 @@
 
 ![Example](assets/images/clapton.png)
 
-Clapton is a Open Source Media Player witch runs on [Clappr](https://github.com/clappr/clappr) and [Electron](https://github.com/electron/electron).
+## About
+
+Clapton is a Open Source Media Player which runs on [Clappr](https://github.com/clappr/clappr) and [Electron](https://github.com/electron/electron).
+
+**It's still under development.**
+
+Then the only way to get Clapton is on development version, [see how to build it](#developing).
 
 ## Features
 
@@ -78,6 +84,26 @@ Version       |HLS|MP4|MP3|WEBM| DASH | RTMP | JPG/PNG/GIF |
  0.1.8 | ✔ | ✔ | ✔ |  ✔ | ![dash](http://flv.io/external3.png) | ![rtmp](http://flv.io/external3.png) | ✔
 
 ![rtmp](http://flv.io/external3.png) means that the support is made by an external plugin.
+
+## Developing
+
+Clone the project:
+
+```bash
+$ git clone https://github.com/raphamorim/clapton.git
+```
+
+Open clapton folder and then install dependencies:
+
+```bash
+$ npm install
+```
+
+Then start project
+
+```bash
+$ npm run start
+```
 
 ## Credits
 
