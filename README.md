@@ -12,8 +12,8 @@ Clapton is a Open Source Media Player witch runs on [Clappr](https://github.com/
 - Hackable
 - Support stream of Torrents
 - Allows multiples Source (automatic playlist)
-- Chromecast Integration ([issue #6](https://github.com/raphamorim/clapton/issues/6))
-- Airplay Integration ([issue #2](https://github.com/raphamorim/clapton/issues/6))
+- Chromecast Integration (only at `0.2.0` - [issue #6](https://github.com/raphamorim/clapton/issues/6))
+- Airplay Integration (only at `0.2.0` - [issue #2](https://github.com/raphamorim/clapton/issues/6))
 - [Suggest a feature](https://github.com/raphamorim/clapton/issues/new)
 
 ## Hackable
@@ -38,7 +38,7 @@ Sample:
   },
   "plugins": [
     "absoulute-path-to-my-plugin",
-    "absoulute-path-to-my-second-plugin",
+    "absoulute-path-to-my-second-plugin"
   ]
 }
 ```
@@ -47,8 +47,6 @@ Note: `.claptonconfig` is optional.
 Note2: Plugins will be available only at `>= Clapton 0.2.0`
 
 ## Create a Plugin for Clapton
-
-Plugins will be available only at `>= Clapton 0.2.0`
 
 #### [Generator-Clappr-Plugin](https://github.com/clappr/generator-clappr-plugin)
 
@@ -68,12 +66,10 @@ Most part of current plugins are being tested on `Clapton 0.2.0`. Help us to int
 |Pause while far| WIP| https://github.com/leandromoreira/clappr-pause-tab-visibility |
 |RTMP           | WIP| https://github.com/clappr/clappr-rtmp-plugin |
 |Picture-in-Picture | WIP| https://github.com/tjenkinson/clappr-pip-plugin |
-|HLS+P2P        | WIP | http://bem.tv |
 |Comments on seekbar| WIP | https://github.com/Metrakit/clappr-comment-plugin |
 |Voice control| WIP | https://github.com/flavioribeiro/clappr-speech-control-plugin |
 |Dash           | WIP | https://github.com/shankardevy/clappr-dash-plugin | |
 |Youtube        | WIP | https://github.com/towerz/clappr-youtube-playback |
-|VAST Ad plugin | WIP | https://github.com/vix-simplex/clappr-ad-plugin |
 
 ## Supported Formats
 
