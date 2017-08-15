@@ -4,6 +4,42 @@
 
 ![Example](assets/images/clapton.png)
 
+## Features
+
+- Is another Open Source Media Player (yey te-hehe)
+- Hackable
+- Support stream of Torrents
+- Allows multiples Source (automatic playlist)
+- Chromecast Integration ([issue #6](https://github.com/raphamorim/clapton/issues/6))
+- Airplay Integration ([issue #2](https://github.com/raphamorim/clapton/issues/6))
+- [Suggest a feature](https://github.com/raphamorim/clapton/issues/new)
+
+## Hackable
+
+Clapton can load local Clappr Plugins. You only need to specify a `~/.claptonconfig` on your `$HOME`
+
+You can create runing:
+
+```bash
+$ touch $HOME/.claptonconfig
+```
+Sample:
+
+```json
+"defaults": {
+  "source": "absolute-path-to-my-video",
+  "colors": {
+    "primaryColor": "blue",
+    "secondColor": "red"
+  }
+},
+"plugins": {
+  "my-clappr-plugin": "absoulute-path-to-my-plugin"
+}
+```
+
+Note: `.claptonconfig` is optional.
+
 ## Extending Clappr
 
 [Generator-Clappr-Plugin](https://github.com/clappr/generator-clappr-plugin)
