@@ -37,7 +37,7 @@ Sample:
 {
   "defaults": {
     "theaterSource": "absolute-path-to-my-video",
-    "overwriteStyle": "absolute-path-to-my-css-file"
+    "extendStyle": "absolute-path-to-my-css-file"
   },
   "plugins": [
     "absoulute-path-to-my-plugin",

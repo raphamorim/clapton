@@ -14,6 +14,7 @@ let PlayerInstance, ClientTorrentInstance
 let Config = {
   defaults: {
     theaterSource: null,
+    extendStyle: null,
   },
   version: require('./package.json').version,
 }
@@ -29,16 +30,26 @@ function InitClapton() {
     return
 
   Config = Object.assign({}, Config, claptonConfig)
-  const { theaterSource } = Config.defaults
-  const videoSampleElement = document.querySelector('#video-sample')
+  const { theaterSource, extendStyle } = Config.defaults
 
   if (theaterSource) {
+    const videoSampleElement = document.querySelector('#video-sample')
     videoSampleElement.pause()
     const sourceElement = document.createElement('source')
     sourceElement.setAttribute('src', theaterSource)
     videoSampleElement.insertBefore(sourceElement, videoSampleElement.children[0])
     videoSampleElement.load()
     videoSampleElement.play()
+  }
+
+  if (extendStyle) {
+    nautilus.config({
+      paths: {
+        extendedStyle: extendStyle
+      }
+    })
+
+    nautilus(['extendedStyle'])
   }
 }
 
@@ -83,7 +94,7 @@ class MyMediaControl extends Clappr.MediaControl {
     )
   }
   constructor(options) {
-      super(options);
+    super(options)
   }
 }
 
@@ -95,7 +106,6 @@ function play(filePaths) {
     parent: playerElement,
     autoPlay: true,
     poster: 'assets/images/video-info-thumb.png',
-    // chromeless: 'true',
     mediacontrol: {
       seekbar: "#2DC0D3",
       buttons: "#FC4C00"
@@ -116,7 +126,7 @@ function play(filePaths) {
         {value: '2.0', label: '2x'},
         {value: '5.0', label: '5x'}
       ]
-    },
+    }
   }
 
   playerElement.classList.add('playing')
@@ -136,7 +146,8 @@ function play(filePaths) {
     PlayerInstance = new Clappr.Player(config)
   }
 
-  videoSampleElement.remove()
+  if (videoSampleElement)
+    videoSampleElement.remove()
 
   window.addEventListener('resize', resizePlayer.bind(this))
   document.addEventListener('webkitfullscreenchange', resizePlayer.bind(this))
@@ -204,9 +215,17 @@ function resizePlayer() {
   })
 }
 
-function openExternal(e) {
+function openExternal(ev) {
   event.preventDefault()
-  shell.openExternal(e.target.href)
+  shell.openExternal(ev.target.href)
+}
+
+function toggleFullScreen(ev) {
+  if (!document.webkitFullscreenElement) {
+    document.documentElement.webkitRequestFullscreen()
+  } else if (document.webkitExitFullscreen) {
+    document.webkitExitFullscreen()
+  }
 }
 
 function initListeners() {
@@ -233,6 +252,9 @@ function initListeners() {
 
   // StopPlayer
   key('esc', stopPlayer)
+
+  // Handle FullScreen
+  key('⌘+f', toggleFullScreen)
 }
 
 InitClapton()
