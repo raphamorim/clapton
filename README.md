@@ -47,6 +47,7 @@ Sample:
 ```
 
 Note: `.claptonconfig` is optional.
+
 Note2: Plugins will be available only at `>= Clapton 0.2.0`
 
 ## Create a Plugin for Clapton

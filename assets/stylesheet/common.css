@@ -13,7 +13,6 @@
 
 textarea, input, button { outline: none; }
 
-/* latin */
 @font-face {
   font-family: 'Space Mono';
   font-style: normal;
@@ -242,14 +241,17 @@ footer a:hover {
   -webkit-transition: all .5s ease;
   transition: all .5s ease;
 }
+
 .btn::-moz-focus-inner {
   padding: 0;
   border: 0;
 }
+
 .btn--stripe {
   overflow: hidden;
   position: relative;
 }
+
 .btn--stripe:after {
   content: '';
   display: block;
@@ -265,11 +267,13 @@ footer a:hover {
   bottom: 0;
   background-size: 7px 7px;
 }
+
 .btn--stripe:hover {
   background-color: #F9C04C;
   color: #2DC0D3;
   border-color: #2DC0D3;
 }
+
 .btn--stripe:hover:after {
   background-image: -webkit-repeating-linear-gradient(45deg, #2DC0D3, #2DC0D3 1px, transparent 2px, transparent 5px);
   background-image: repeating-linear-gradient(45deg, #2DC0D3, #2DC0D3 1px, transparent 2px, transparent 5px);
@@ -287,12 +291,7 @@ footer a:hover {
   }
 }
 
-*::selection {
-  background: #2DC0D3;
-}
-
-@media (max-height: 600px)
-{
+@media (max-height: 600px) {
   footer {
     display: none;
   }
@@ -307,4 +306,8 @@ footer a:hover {
     margin-top: -12em;
     height: 43em;
   }
+}
+
+*::selection {
+  background: #2DC0D3;
 }
