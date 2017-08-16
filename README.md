@@ -46,6 +46,12 @@ Sample:
 }
 ```
 
+|Property         |Description|
+|-----------------------|---------------------------------------|
+|`theaterSource` | (string) Path to the Theater Clapton's Video|
+|`extendStyle` | (string) Path to css file which overwrite [common.css](https://github.com/raphamorim/clapton/blob/master/assets/stylesheet/common.css) styles|
+|`persistTorrentFiles`| (boolean, default: `false`) Persist Torrent downloaded files| 
+
 Note: `.claptonconfig` is optional.
 
 Note2: Plugins will be available only at `>= Clapton 0.2.0`
