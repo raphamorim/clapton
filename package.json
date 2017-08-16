@@ -38,6 +38,7 @@
     "electron": "^1.7.5",
     "electron-simple-updater": "^1.2.1",
     "keymaster": "^1.6.2",
+    "nautilusjs": "^1.0.0",
     "try-require": "^1.2.1",
     "webtorrent": "^0.98.19"
   },

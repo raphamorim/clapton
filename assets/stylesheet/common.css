@@ -63,6 +63,7 @@ html, body {
   cursor: pointer;
   text-transform: uppercase;
   font-family: monospace;
+  word-break: break-all;
   display: none;
   text-shadow: 1px 1px 5px #000;
 }

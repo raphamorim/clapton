@@ -10,11 +10,11 @@ Clapton is a Open Source Media Player which runs on [Clappr](https://github.com/
 
 **It's still under development.**
 
-Then the only way to get Clapton is on development version, [see how to build it](#developing).
+Then the only way to get Clapton is getting the development version, [see how to build it](#developing).
 
 ## Features
 
-- Another Open Source Media Player 🦄 🦄 🦄
+- Yet Another Open Source Media Player 🦄 🦄 🦄
 - Hackable
 - Support stream of Torrents
 - Allows multiples Source (automatic playlist)
@@ -37,10 +37,7 @@ Sample:
 {
   "defaults": {
     "theaterSource": "absolute-path-to-my-video",
-    "colors": {
-      "primaryColor": "blue",
-      "secondColor": "red"
-    }
+    "overwriteStyle": "absolute-path-to-my-css-file"
   },
   "plugins": [
     "absoulute-path-to-my-plugin",

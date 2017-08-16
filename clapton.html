@@ -5,6 +5,7 @@
   <link rel="stylesheet" href="assets/stylesheet/common.css">
 
   <title>Clapton</title>
+  <script type="text/javascript" src="node_modules/nautilusjs/nautilus.min.js"></script>
 </head>
 <body>
   <div id="status">0%</div>
@@ -38,10 +39,24 @@
     <p id="version"></p>
   </footer>
 
-  <script type="text/javascript" src="node_modules/keymaster/keymaster.js"></script>
-  <script type="text/javascript" src="node_modules/clappr/dist/clappr.min.js"></script>
-  <script type="text/javascript" src="node_modules/clappr-playback-rate-plugin/dist/clappr-playback-rate-plugin.min.js"></script>
-  <script type="text/javascript" src="assets/javascript/clappr-playlist-plugin.min.js" async></script>
-  <script type="text/javascript" src="src/clapton.js"></script>
+  <script type="text/javascript">
+    nautilus.config({
+        paths: {
+          clapton: 'src/clapton.js',
+          keymaster: 'node_modules/keymaster/keymaster.js',
+          clappr: 'node_modules/clappr/dist/clappr.min.js',
+          clapprPlaylistPlugin: 'assets/javascript/clappr-playlist-plugin.min.js',
+          clapprPlaybackRatePlugin: 'node_modules/clappr-playback-rate-plugin/dist/clappr-playback-rate-plugin.min.js',
+        }
+    })
+
+    nautilus(
+      ['clappr', 'keymaster'],
+      ['clapprPlaybackRatePlugin', 'clapprPlaylistPlugin'],
+      () => {
+        nautilus('clapton')
+      }
+    )
+  </script>
 </body>
 </html>

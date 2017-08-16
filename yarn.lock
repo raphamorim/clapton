@@ -282,7 +282,18 @@ chunk-store-stream@^2.0.2:
     inherits "^2.0.1"
     readable-stream "^2.0.5"
 
-clappr@^0.2.71:
+clappr-playback-rate-plugin@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/clappr-playback-rate-plugin/-/clappr-playback-rate-plugin-0.3.1.tgz#86882615c70cf72e3f037b6fce76a0e9f7f7b879"
+  dependencies:
+    clappr latest
+    clappr-zepto latest
+
+clappr-zepto@latest:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/clappr-zepto/-/clappr-zepto-0.0.7.tgz#a235973d668d9041af589c265e2c31fe54226fe1"
+
+clappr@^0.2.71, clappr@latest:
   version "0.2.71"
   resolved "https://registry.yarnpkg.com/clappr/-/clappr-0.2.71.tgz#51a3f700d74f7c619d426dd024f8e58ff753f252"
 
@@ -1108,6 +1119,10 @@ nan@~2.6.0:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.6.2.tgz#e4ff34e6c95fdfb5aecc08de6596f43605a7db45"
 
+nautilusjs@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/nautilusjs/-/nautilusjs-1.0.0.tgz#360c7aec89e721a1486ee8e2de5dc2c22c135c44"
+
 netmask@^1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/netmask/-/netmask-1.0.6.tgz#20297e89d86f6f6400f250d9f4f6b4c1945fcd35"
@@ -1844,6 +1859,10 @@ truncate-utf8-bytes@^1.0.0:
   resolved "https://registry.yarnpkg.com/truncate-utf8-bytes/-/truncate-utf8-bytes-1.0.2.tgz#405923909592d56f78a5818434b0b78489ca5f2b"
   dependencies:
     utf8-byte-length "^1.0.1"
+
+try-require@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/try-require/-/try-require-1.2.1.tgz#34489a2cac0c09c1cc10ed91ba011594d4333be2"
 
 tunnel-agent@^0.6.0:
   version "0.6.0"
