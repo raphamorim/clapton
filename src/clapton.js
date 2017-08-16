@@ -59,11 +59,11 @@ function playFromStream(torrentFile) {
   ClientTorrentInstance = new WebTorrent()
   // var magnetURI = 'magnet:?xt=urn:btih:D9870CA440CD79425D47E0EB4E2DEC564A9E94D9&dn=Deadpool%202016%20WEB-DL%201080p%20Legendado%20-%20WWW.THEPIRATEFILMES.COM&tr=udp%3a%2f%2ftracker.trackerfix.com%3a80%2fannounce'
 
-  ClientTorrentInstance.add(torrentFile, function(torrent) {
+  ClientTorrentInstance.add(torrentFile, torrent => {
     // console.log('Client is downloading:', torrent.infoHash)
 
     function updateTorrentProgress() {
-      statusElement.textContent = Math.floor(ClientTorrentInstance.progress * 100) + '%'
+      statusElement.textContent = `${Math.floor(ClientTorrentInstance.progress * 100)}%`
 
       requestIdleCallback(updateTorrentProgress)
     }
@@ -71,8 +71,8 @@ function playFromStream(torrentFile) {
     requestIdleCallback(updateTorrentProgress)
     statusElement.classList.add('downloading')
 
-    torrent.files.forEach(function(file) {
-      if (file.path.indexOf('mp4') >= 0)
+    torrent.files.forEach(file => {
+      if (file.path.includes('mp4'))
         return play(
           [
             path.resolve(file._torrent.path, file.path)
@@ -200,7 +200,7 @@ function openVideoFile() {
     properties: [ 'openFile', 'multiSelections' ]
   }, (fileNames) => {
     if (fileNames && fileNames.length) {
-      if (fileNames[0].indexOf('torrent') >= 0)
+      if (fileNames[0].includes('torrent'))
         playFromStream(fileNames[0])
       else
         play(fileNames)
@@ -239,7 +239,7 @@ function initListeners() {
     ev.preventDefault()
   }
 
-  document.body.ondrop = function(ev) {
+  document.body.ondrop = ev => {
     play(ev.dataTransfer.files[0].path)
     ev.preventDefault()
   }
