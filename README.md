@@ -29,7 +29,7 @@ Clapton can load local Clappr Plugins. You only need to specify a `~/.claptoncon
 You can create running:
 
 ```bash
-$ touch $HOME/.claptonconfig
+$ touch $HOME/claptonconfig.json
 ```
 Sample:
 
@@ -52,7 +52,7 @@ Sample:
 |`extendStyle` | (string) Path to css file which overwrite [common.css](https://github.com/raphamorim/clapton/blob/master/assets/stylesheet/common.css) styles|
 |`persistTorrentFiles`| (boolean, default: `false`) Persist Torrent downloaded files| 
 
-Note: `.claptonconfig` is optional.
+Note: `claptonconfig.json` is optional.
 
 Note2: Plugins will be available only at `>= Clapton 0.2.0`
 
