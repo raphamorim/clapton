@@ -4,6 +4,7 @@ const shell = require('electron').shell
 const path = require('path')
 const tryRequire = require('try-require')
 const WebTorrent = require('webtorrent')
+const Player = require('./src/Player.js')
 
 const playerElement = document.querySelector('#player')
 const containerElement = document.querySelector('.container')
@@ -140,10 +141,16 @@ function play(filePaths) {
     delete config.source
   }
 
-  if (PlayerInstance) {
-    PlayerInstance.configure(config)
+  let files = filePaths.join()
+  if (files.includes('mkv') || files.includes('avi')) {
+    PlayerInstance = new Player(config)
+    PlayerInstance.play()
   } else {
-    PlayerInstance = new Clappr.Player(config)
+    if (PlayerInstance) {
+      PlayerInstance.configure(config)
+    } else {
+      PlayerInstance = new Clappr.Player(config)
+    }
   }
 
   if (videoSampleElement)
@@ -188,12 +195,12 @@ function stopPlayer(ev, target) {
 
 function openVideoFile() {
   remote.dialog.showOpenDialog(remote.getCurrentWindow(), {
-    // TODO: support 'mkv', 'avi'
     filters: [
       {
         name: 'Movies',
         extensions: [
-          'mp4', 'webm', 'hls', 'mp3', 'jpg', 'png', 'gif', 'torrent'
+          'avi', 'mkv', 'mp4', 'webm', 'hls',
+          'mp3', 'jpg', 'png', 'gif', 'torrent'
         ]
       }
     ],
@@ -240,7 +247,8 @@ function initListeners() {
   }
 
   document.body.ondrop = function(ev) {
-    play(ev.dataTransfer.files[0].path)
+    // TODO: map files
+    play([ev.dataTransfer.files[0].path])
     ev.preventDefault()
   }
 
