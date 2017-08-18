@@ -5,15 +5,17 @@ class Player {
 
   play() {
     const { parent, source } = this.config
-    const videoElement = document.createElement('video')
-    parent.appendChild(videoElement)
-    console.log(parent)
-    const sourceElement = document.createElement('source')
-    videoElement.setAttribute('src', source)
-    videoElement.insertBefore(sourceElement, videoElement.children[0])
-    videoElement.load()
-    videoElement.play()
-    console.log(this.config)
+    const iframe = document.createElement('iframe')
+    iframe.width = "100%"
+    iframe.height = "100%"
+    iframe.src = source
+
+    // if(iframe.addEventListener)
+    //   iframe.addEventListener('keydown', func, true)
+    // else if(iframe.attachEvent)
+    //   iframe.attachEvent('onKeyDown',func)
+
+    parent.appendChild(iframe)
   }
 
   stop() {

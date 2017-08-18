@@ -127,7 +127,7 @@ function play(filePaths) {
         {value: '2.0', label: '2x'},
         {value: '5.0', label: '5x'}
       ]
-    }
+    },
   }
 
   playerElement.classList.add('playing')
