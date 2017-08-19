@@ -1,8 +1,10 @@
-const { app, BrowserWindow } = require('electron')
-
 const { resolve } = require('path')
 const path = require('path')
 const url = require('url')
+const { app, BrowserWindow } = require('electron')
+
+const { appUpdater } = require('./src/auto-update')
+const isDev = require('electron-is-dev')
 
 let mainWindow
 
@@ -37,8 +39,9 @@ function createWindow() {
     slashes: true
   }))
 
-  // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  // Open the DevTools
+  if (isDev)
+    mainWindow.webContents.openDevTools()
 
   mainWindow.on('closed', function() {
     mainWindow = null
@@ -46,6 +49,8 @@ function createWindow() {
 
   mainWindow.once('ready-to-show', () => {
     mainWindow.show()
+    if (process.platform === 'darwin')
+      appUpdater()
   })
 }
 
