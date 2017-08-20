@@ -142,7 +142,7 @@ function play(filePaths) {
   }
 
   let files = filePaths.join()
-  if (files.includes('mkv') || files.includes('avi')) {
+  if (files.includes('mkv') || files.includes('ogg')) {
     PlayerInstance = new Player(config)
     PlayerInstance.play()
   } else {
@@ -199,7 +199,7 @@ function openVideoFile() {
       {
         name: 'Movies',
         extensions: [
-          'avi', 'mkv', 'mp4', 'webm', 'hls',
+          'ogg', 'mkv', 'mp4', 'webm', 'hls',
           'mp3', 'jpg', 'png', 'gif', 'torrent'
         ]
       }
