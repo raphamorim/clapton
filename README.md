@@ -15,8 +15,8 @@ Then the only way to get Clapton is getting the development version, [see how to
 ## Features
 
 - Yet Another Open Source Media Player 🦄 🦄 🦄
-- Hackable
-- Support stream of Torrents
+- [Hackable](#hackable)
+- [Torrent Stream Support](#torrent-stream-support)
 - Allows multiples Source (automatic playlist)
 - Chromecast Integration (only at `0.2.0` - [issue #6](https://github.com/raphamorim/clapton/issues/6))
 - Airplay Integration (only at `0.2.0` - [issue #2](https://github.com/raphamorim/clapton/issues/6))
@@ -55,6 +55,10 @@ Sample:
 Note: `claptonconfig.json` is optional.
 
 Note2: Plugins will be available only at `>= Clapton 0.2.0`
+
+## Torrent Stream Support
+
+[![Torrent Stream Support](https://i.vimeocdn.com/video/650888603.jpg)](https://vimeo.com/230344225 "Torrent Stream Support")
 
 ## Create a Plugin for Clapton
 
