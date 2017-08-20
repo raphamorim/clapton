@@ -6,7 +6,7 @@
 
 ## About
 
-Clapton is a Open Source Media Player which runs on [Clappr](https://github.com/clappr/clappr) and [Electron](https://github.com/electron/electron).
+Clapton is a Open Source Media Player.
 
 **It's still under development.**
 
@@ -118,5 +118,3 @@ $ npm run start
 Clapton was created by [@raphamundi](https://twitter.com/raphamundi).
 
 Powered by [Electron](https://github.com/electron/electron), [Clappr](github.com/clappr/clappr) and [WebTorrent](https://github.com/webtorrent/webtorrent).
-
-*
