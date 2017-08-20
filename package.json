@@ -1,6 +1,6 @@
 {
   "name": "clapton",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Yet Another OpenSource Desktop Media Player",
   "main": "main.js",
   "scripts": {
@@ -38,6 +38,7 @@
     "electron": "^1.7.5",
     "electron-is-dev": "^0.3.0",
     "electron-simple-updater": "^1.2.1",
+    "electron-squirrel-startup": "^1.0.0",
     "keymaster": "^1.6.2",
     "nautilusjs": "^1.0.0",
     "try-require": "^1.2.1",

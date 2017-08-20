@@ -1,6 +1,13 @@
 class Player {
   constructor(config) {
     this.config = config
+    this._options = config
+  }
+
+  escapeHandler(ev) {
+    if (e.keyCode === 27)
+      console.log(11)
+
   }
 
   play() {
@@ -10,15 +17,13 @@ class Player {
     iframe.height = "100%"
     iframe.src = source
 
-    // if(iframe.addEventListener)
-    //   iframe.addEventListener('keydown', func, true)
-    // else if(iframe.attachEvent)
-    //   iframe.attachEvent('onKeyDown',func)
+    if (iframe.addEventListener)
+      iframe.addEventListener('keydown', this.escapeHandler, true)
 
     parent.appendChild(iframe)
   }
 
-  stop() {
+  pause() {
     console.log(this.config)
   }
 
