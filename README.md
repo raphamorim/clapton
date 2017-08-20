@@ -87,9 +87,9 @@ Most part of current plugins are being tested on `Clapton 0.2.0`. Help us to int
 
 ## Supported Formats
 
-Version       |HLS|MP4|OGG|MKV|MP3|WEBM| DASH | RTMP | JPG/PNG/GIF |
+Version       |HLS|MP4|OGV|MKV|MP3|WEBM| DASH | RTMP | JPG/PNG/GIF |
 -------------|---|---|---|---|---|----|------|------|-------------|
- 0.1.8 | ✔ | ✔ | partial support* | partial support* | ✔ |  ✔ | ![dash](http://flv.io/external3.png) | ![rtmp](http://flv.io/external3.png) | ✔
+ 0.1.8 | ✔ | ✔ | partial support* | ✔ | ✔ |  ✔ | ![dash](http://flv.io/external3.png) | ![rtmp](http://flv.io/external3.png) | ✔
 
 ![rtmp](http://flv.io/external3.png) means that the support is made by an external plugin.
 

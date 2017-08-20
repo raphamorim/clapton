@@ -55,7 +55,7 @@ function InitClapton() {
 }
 
 function hasExtension(filePath) {
-  const torrentExtensions = ['ogg', 'mkv', 'mp4', 'webm', 'hls']
+  const torrentExtensions = ['ogv', 'mkv', 'mp4', 'webm', 'hls']
   for (var i = torrentExtensions.length - 1; i >= 0; i--) {
     if (filePath.includes(torrentExtensions[i])) {
       return true
@@ -153,12 +153,17 @@ function play(filePaths) {
   }
 
   let files = filePaths.join()
-  if (files.includes('mkv') || files.includes('ogg')) {
+  if (files.includes('mkv')) {
     PlayerInstance = new Player(config)
     PlayerInstance.play()
   } else {
     if (PlayerInstance) {
-      PlayerInstance.configure(config)
+      if (!PlayerInstance._sourceElement)
+        PlayerInstance.configure(config)
+      else {
+        PlayerInstance = PlayerInstance.clean()
+        return play(filePaths)
+      }
     } else {
       PlayerInstance = new Clappr.Player(config)
     }
@@ -210,7 +215,7 @@ function openVideoFiles(ev, defaultPath) {
       {
         name: 'Movies',
         extensions: [
-          'ogg', 'mkv', 'mp4', 'webm', 'hls',
+          'ogv', 'mkv', 'mp4', 'webm', 'hls',
           'mp3', 'jpg', 'png', 'gif', 'torrent'
         ]
       }

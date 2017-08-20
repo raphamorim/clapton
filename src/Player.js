@@ -21,6 +21,7 @@ class Player {
     if (!videoElement) {
       videoElement = document.createElement('video')
       videoElement.id = 'clapton-fallback-player'
+      parent.innerHTML = ''
       parent.appendChild(videoElement)
     }
 
@@ -40,6 +41,11 @@ class Player {
 
   pause() {
     this._sourceElement.pause()
+  }
+
+  clean() {
+    this._sourceElement.remove()
+    return null
   }
 
   resize() {
