@@ -84,12 +84,12 @@ Most part of current plugins are being tested on `Clapton 0.2.0`. Help us to int
 ## Supported Formats
 
 Version       |HLS|MP4|OGG|MKV|MP3|WEBM| DASH | RTMP | JPG/PNG/GIF |
--------------|---|---|---|----|------|------|-------------|
+-------------|---|---|---|---|---|----|------|------|-------------|
  0.1.8 | ✔ | ✔ | partial support* | partial support* | ✔ |  ✔ | ![dash](http://flv.io/external3.png) | ![rtmp](http://flv.io/external3.png) | ✔
 
 ![rtmp](http://flv.io/external3.png) means that the support is made by an external plugin.
 
-* Partial Support means that you can play this file formats, however using a fallback player:
+**Partial Support** means that you can play this file formats, however using a fallback player:
 
 ![Fallback](assets/images/fallback-player.png)
 
@@ -119,3 +119,4 @@ Clapton was created by [@raphamundi](https://twitter.com/raphamundi).
 
 Powered by [Electron](https://github.com/electron/electron), [Clappr](github.com/clappr/clappr) and [WebTorrent](https://github.com/webtorrent/webtorrent).
 
+*
