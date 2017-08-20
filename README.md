@@ -58,7 +58,7 @@ Note2: Plugins will be available only at `>= Clapton 0.2.0`
 
 ## Torrent Stream Support
 
-[![Torrent Stream Support](https://i.vimeocdn.com/video/650888603.jpg)](https://vimeo.com/230344225 "Torrent Stream Support")
+[![Torrent Stream Support](http://i.imgur.com/qMMJItW.png)](https://vimeo.com/230344225 "Torrent Stream Support")
 
 ## Create a Plugin for Clapton
 
