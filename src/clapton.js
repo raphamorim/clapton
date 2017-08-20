@@ -1,4 +1,4 @@
-const remote = require('electron').remote
+const { dialog, getCurrentWindow } = require('electron').remote
 const shell = require('electron').shell
 
 const path = require('path')
@@ -54,6 +54,17 @@ function InitClapton() {
   }
 }
 
+function hasExtension(filePath) {
+  const torrentExtensions = ['ogg', 'mkv', 'mp4', 'webm', 'hls']
+  for (var i = torrentExtensions.length - 1; i >= 0; i--) {
+    if (filePath.includes(torrentExtensions[i])) {
+      return true
+    }
+  }
+
+  return false
+}
+
 function playFromStream(torrentFile) {
   const statusElement = document.querySelector('#status')
 
@@ -73,7 +84,7 @@ function playFromStream(torrentFile) {
     statusElement.classList.add('downloading')
 
     torrent.files.forEach(function(file) {
-      if (file.path.indexOf('mp4') >= 0)
+      if (hasExtension(file.path))
         return play(
           [
             path.resolve(file._torrent.path, file.path)
@@ -193,8 +204,8 @@ function stopPlayer(ev, target) {
     PlayerInstance.pause()
 }
 
-function openVideoFile() {
-  remote.dialog.showOpenDialog(remote.getCurrentWindow(), {
+function openVideoFiles(ev, defaultPath) {
+  const dialogConfig = {
     filters: [
       {
         name: 'Movies',
@@ -204,8 +215,13 @@ function openVideoFile() {
         ]
       }
     ],
-    properties: [ 'openFile', 'multiSelections' ]
-  }, (fileNames) => {
+    properties: [ 'openFile', 'createDirectory', 'multiSelections' ]
+  }
+
+  if (defaultPath)
+    dialogConfig['defaultPath'] = defaultPath
+
+  dialog.showOpenDialog(getCurrentWindow(), dialogConfig, (fileNames) => {
     if (fileNames && fileNames.length) {
       if (fileNames[0].indexOf('torrent') >= 0)
         playFromStream(fileNames[0])
@@ -240,7 +256,7 @@ function initListeners() {
   const openFileElement = document.querySelector('#open-file')
 
   linkTwitterElement.addEventListener('click', openExternal)
-  openFileElement.addEventListener('click', openVideoFile)
+  openFileElement.addEventListener('click', openVideoFiles)
 
   document.ondragover = document.ondrop = (ev) => {
     ev.preventDefault()
@@ -253,7 +269,7 @@ function initListeners() {
   }
 
   // Handle OpenFile
-  key('⌘+o', openVideoFile)
+  key('⌘+o', openVideoFiles)
 
   // Handle Preferences
   // key('⌘+,',)

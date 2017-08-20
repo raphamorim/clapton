@@ -6,6 +6,10 @@ class Player {
     this._options = config
   }
 
+  configure() {
+
+  }
+
   play() {
     const {
       parent,
