@@ -59,11 +59,11 @@ function playFromStream(torrentFile) {
   ClientTorrentInstance = new WebTorrent()
   // var magnetURI = 'magnet:?xt=urn:btih:D9870CA440CD79425D47E0EB4E2DEC564A9E94D9&dn=Deadpool%202016%20WEB-DL%201080p%20Legendado%20-%20WWW.THEPIRATEFILMES.COM&tr=udp%3a%2f%2ftracker.trackerfix.com%3a80%2fannounce'
 
-  ClientTorrentInstance.add(torrentFile, torrent => {
+  ClientTorrentInstance.add(torrentFile, function(torrent) {
     // console.log('Client is downloading:', torrent.infoHash)
 
     function updateTorrentProgress() {
-      statusElement.textContent = `${Math.floor(ClientTorrentInstance.progress * 100)}%`
+      statusElement.textContent = Math.floor(ClientTorrentInstance.progress * 100) + '%'
 
       requestIdleCallback(updateTorrentProgress)
     }
@@ -239,7 +239,7 @@ function initListeners() {
     ev.preventDefault()
   }
 
-  document.body.ondrop = ev => {
+  document.body.ondrop = function(ev) {
     play(ev.dataTransfer.files[0].path)
     ev.preventDefault()
   }
