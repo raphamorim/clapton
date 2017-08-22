@@ -1,8 +1,16 @@
-const { app, BrowserWindow } = require('electron')
-
 const { resolve } = require('path')
 const path = require('path')
 const url = require('url')
+const { app, BrowserWindow } = require('electron')
+
+const { appUpdater } = require('./src/auto-update')
+const isDev = require('electron-is-dev')
+
+/* Handling squirrel.windows events on windows
+only required if you have build the windows with target squirrel. For NSIS target you don't need it. */
+if (require('electron-squirrel-startup')) {
+  app.quit()
+}
 
 let mainWindow
 
@@ -37,8 +45,9 @@ function createWindow() {
     slashes: true
   }))
 
-  // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  // Open the DevTools
+  if (isDev)
+    mainWindow.webContents.openDevTools()
 
   mainWindow.on('closed', function() {
     mainWindow = null
@@ -46,6 +55,13 @@ function createWindow() {
 
   mainWindow.once('ready-to-show', () => {
     mainWindow.show()
+  })
+
+  const page = mainWindow.webContents
+
+  page.once('did-frame-finish-load', () => {
+    if (process.platform === 'darwin' && !isDev)
+        appUpdater()
   })
 }
 

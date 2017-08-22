@@ -6,7 +6,7 @@
 
 ## About
 
-Clapton is a Open Source Media Player which runs on [Clappr](https://github.com/clappr/clappr) and [Electron](https://github.com/electron/electron).
+Clapton is a Open Source Media Player.
 
 **It's still under development.**
 
@@ -15,8 +15,8 @@ Then the only way to get Clapton is getting the development version, [see how to
 ## Features
 
 - Yet Another Open Source Media Player 🦄 🦄 🦄
-- Hackable
-- Support stream of Torrents
+- [Hackable](#hackable)
+- [Torrent Stream Support](#torrent-stream-support)
 - Allows multiples Source (automatic playlist)
 - Chromecast Integration (only at `0.2.0` - [issue #6](https://github.com/raphamorim/clapton/issues/6))
 - Airplay Integration (only at `0.2.0` - [issue #2](https://github.com/raphamorim/clapton/issues/6))
@@ -50,11 +50,15 @@ Sample:
 |-----------------------|---------------------------------------|
 |`theaterSource` | (string) Path to the Theater Clapton's Video|
 |`extendStyle` | (string) Path to css file which overwrite [common.css](https://github.com/raphamorim/clapton/blob/master/assets/stylesheet/common.css) styles|
-|`persistTorrentFiles`| (boolean, default: `false`) Persist Torrent downloaded files| 
+|`persistTorrentFiles`| (boolean, default: `false`) Persist Torrent downloaded files|
 
 Note: `claptonconfig.json` is optional.
 
 Note2: Plugins will be available only at `>= Clapton 0.2.0`
+
+## Torrent Stream Support
+
+[![Torrent Stream Support](http://i.imgur.com/qMMJItW.png)](https://vimeo.com/230344225 "Torrent Stream Support")
 
 ## Create a Plugin for Clapton
 
@@ -83,11 +87,15 @@ Most part of current plugins are being tested on `Clapton 0.2.0`. Help us to int
 
 ## Supported Formats
 
-Version       |HLS|MP4|MP3|WEBM| DASH | RTMP | JPG/PNG/GIF |
--------------|---|---|---|----|------|------|-------------|
- 0.1.8 | ✔ | ✔ | ✔ |  ✔ | ![dash](http://flv.io/external3.png) | ![rtmp](http://flv.io/external3.png) | ✔
+Version       |HLS|MP4|OGV|MKV|MP3|WEBM| DASH | RTMP | JPG/PNG/GIF |
+-------------|---|---|---|---|---|----|------|------|-------------|
+ 0.1.8 | ✔ | ✔ | ✔ | partial support* | ✔ |  ✔ | ![dash](http://flv.io/external3.png) | ![rtmp](http://flv.io/external3.png) | ✔
 
 ![rtmp](http://flv.io/external3.png) means that the support is made by an external plugin.
+
+**Partial Support** means that you can play this file formats, however using a fallback player:
+
+![Fallback](assets/images/fallback-player.png)
 
 ## Developing
 
@@ -114,4 +122,3 @@ $ npm run start
 Clapton was created by [@raphamundi](https://twitter.com/raphamundi).
 
 Powered by [Electron](https://github.com/electron/electron), [Clappr](github.com/clappr/clappr) and [WebTorrent](https://github.com/webtorrent/webtorrent).
-

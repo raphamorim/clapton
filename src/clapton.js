@@ -1,9 +1,10 @@
-const remote = require('electron').remote
+const { dialog, getCurrentWindow } = require('electron').remote
 const shell = require('electron').shell
 
 const path = require('path')
 const tryRequire = require('try-require')
 const WebTorrent = require('webtorrent')
+const Player = require('./src/Player.js')
 
 const playerElement = document.querySelector('#player')
 const containerElement = document.querySelector('.container')
@@ -53,6 +54,17 @@ function InitClapton() {
   }
 }
 
+function hasExtension(filePath) {
+  const torrentExtensions = ['ogv', 'mkv', 'mp4', 'webm', 'hls']
+  for (var i = torrentExtensions.length - 1; i >= 0; i--) {
+    if (filePath.includes(torrentExtensions[i])) {
+      return true
+    }
+  }
+
+  return false
+}
+
 function playFromStream(torrentFile) {
   const statusElement = document.querySelector('#status')
 
@@ -71,8 +83,8 @@ function playFromStream(torrentFile) {
     requestIdleCallback(updateTorrentProgress)
     statusElement.classList.add('downloading')
 
-    torrent.files.forEach(file => {
-      if (file.path.includes('mp4'))
+    torrent.files.forEach(function(file) {
+      if (hasExtension(file.path))
         return play(
           [
             path.resolve(file._torrent.path, file.path)
@@ -126,7 +138,7 @@ function play(filePaths) {
         {value: '2.0', label: '2x'},
         {value: '5.0', label: '5x'}
       ]
-    }
+    },
   }
 
   playerElement.classList.add('playing')
@@ -140,10 +152,21 @@ function play(filePaths) {
     delete config.source
   }
 
-  if (PlayerInstance) {
-    PlayerInstance.configure(config)
+  let files = filePaths.join()
+  if (files.includes('mkv')) {
+    PlayerInstance = new Player(config)
+    PlayerInstance.play()
   } else {
-    PlayerInstance = new Clappr.Player(config)
+    if (PlayerInstance) {
+      if (!PlayerInstance._sourceElement)
+        PlayerInstance.configure(config)
+      else {
+        PlayerInstance = PlayerInstance.clean()
+        return play(filePaths)
+      }
+    } else {
+      PlayerInstance = new Clappr.Player(config)
+    }
   }
 
   if (videoSampleElement)
@@ -186,19 +209,24 @@ function stopPlayer(ev, target) {
     PlayerInstance.pause()
 }
 
-function openVideoFile() {
-  remote.dialog.showOpenDialog(remote.getCurrentWindow(), {
-    // TODO: support 'mkv', 'avi'
+function openVideoFiles(ev, defaultPath) {
+  const dialogConfig = {
     filters: [
       {
         name: 'Movies',
         extensions: [
-          'mp4', 'webm', 'hls', 'mp3', 'jpg', 'png', 'gif', 'torrent'
+          'ogv', 'mkv', 'mp4', 'webm', 'hls',
+          'mp3', 'jpg', 'png', 'gif', 'torrent'
         ]
       }
     ],
-    properties: [ 'openFile', 'multiSelections' ]
-  }, (fileNames) => {
+    properties: [ 'openFile', 'createDirectory', 'multiSelections' ]
+  }
+
+  if (defaultPath)
+    dialogConfig['defaultPath'] = defaultPath
+
+  dialog.showOpenDialog(getCurrentWindow(), dialogConfig, (fileNames) => {
     if (fileNames && fileNames.length) {
       if (fileNames[0].includes('torrent'))
         playFromStream(fileNames[0])
@@ -233,19 +261,20 @@ function initListeners() {
   const openFileElement = document.querySelector('#open-file')
 
   linkTwitterElement.addEventListener('click', openExternal)
-  openFileElement.addEventListener('click', openVideoFile)
+  openFileElement.addEventListener('click', openVideoFiles)
 
   document.ondragover = document.ondrop = (ev) => {
     ev.preventDefault()
   }
 
   document.body.ondrop = function(ev) {
-    play(ev.dataTransfer.files[0].path)
+    // TODO: map files
+    play([ev.dataTransfer.files[0].path])
     ev.preventDefault()
   }
 
   // Handle OpenFile
-  key('⌘+o', openVideoFile)
+  key('⌘+o', openVideoFiles)
 
   // Handle Preferences
   // key('⌘+,',)
