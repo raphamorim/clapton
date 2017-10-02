@@ -121,4 +121,4 @@ $ npm run start
 
 Clapton was created by [@raphamundi](https://twitter.com/raphamundi).
 
-Powered by [Electron](https://github.com/electron/electron), [Clappr](github.com/clappr/clappr) and [WebTorrent](https://github.com/webtorrent/webtorrent).
+Powered by [Electron](https://github.com/electron/electron), [Clappr](https://github.com/clappr/clappr) and [WebTorrent](https://github.com/webtorrent/webtorrent).
