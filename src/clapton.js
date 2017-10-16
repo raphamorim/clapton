@@ -294,7 +294,7 @@ function initListeners() {
   key('⌘+f', toggleFullScreen)
 
   // Toggle Player
-  key('space', togglePlayer)
+  key('ctrl+space', togglePlayer)
 
 }
 
