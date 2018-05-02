@@ -1,6 +1,6 @@
 {
   "name": "clapton",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Yet Another OpenSource Desktop Media Player",
   "main": "main.js",
   "scripts": {
@@ -35,13 +35,14 @@
   "dependencies": {
     "clappr": "^0.2.71",
     "clappr-playback-rate-plugin": "^0.3.1",
-    "electron": "^1.7.5",
+    "electron": "^1.8.2",
     "electron-is-dev": "^0.3.0",
     "electron-simple-updater": "^1.2.1",
     "electron-squirrel-startup": "^1.0.0",
     "keymaster": "^1.6.2",
     "nautilusjs": "^1.0.0",
     "try-require": "^1.2.1",
+    "update-electron-app": "^1.1.2",
     "webtorrent": "^0.98.19"
   },
   "engines": {
