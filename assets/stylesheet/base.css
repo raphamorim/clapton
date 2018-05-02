@@ -16,6 +16,10 @@ body {
   margin-bottom: 30px;
 }
 
+.content video {
+  width: 80%;
+}
+
 .glitch {
   font-family: 'Space Mono', monospace;
   color: #FC4C00;
